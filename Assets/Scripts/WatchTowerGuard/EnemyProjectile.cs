@@ -1,31 +1,34 @@
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+namespace WatchTowerGuard
 {
-    public float damage = 20f;
-    public float lifeTime = 5f;
-
-    private void Start()
+    public class EnemyProjectile : MonoBehaviour
     {
-        Destroy(gameObject, lifeTime); // Auto destroy after time
-    }
+        public float damage = 20f;
+        public float lifeTime = 5f;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        private void Start()
         {
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damage);
-            }
-            Destroy(gameObject); // Destroy projectile after hit
+            Destroy(gameObject, lifeTime); // Auto destroy after time
         }
 
-        // Optional: Destroy on ground impact
-        if (other.CompareTag("Ground"))
+        private void OnTriggerEnter(Collider other)
         {
-            Destroy(gameObject);
+            if (other.CompareTag("Player"))
+            {
+                PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damage);
+                }
+                Destroy(gameObject); // Destroy projectile after hit
+            }
+
+            // Optional: Destroy on ground impact
+            if (other.CompareTag("Ground"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

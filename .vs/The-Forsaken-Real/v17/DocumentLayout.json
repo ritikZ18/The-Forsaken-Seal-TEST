@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\ritik\\The-Forsaken-Real\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\WatchTowerGuard\\EnemyProjectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\WatchTowerGuard\\EnemyProjectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\WatchTowerGuard\\PlayerHealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\WatchTowerGuard\\PlayerHealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\PlayerMovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\PlayerMovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,6 +35,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "EnemyProjectile.cs",
+              "DocumentMoniker": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\WatchTowerGuard\\EnemyProjectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\WatchTowerGuard\\EnemyProjectile.cs",
+              "ToolTip": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\WatchTowerGuard\\EnemyProjectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\WatchTowerGuard\\EnemyProjectile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T23:24:34.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerHealth.cs",
+              "DocumentMoniker": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\WatchTowerGuard\\PlayerHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\WatchTowerGuard\\PlayerHealth.cs",
+              "ToolTip": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\WatchTowerGuard\\PlayerHealth.cs",
+              "RelativeToolTip": "Assets\\Scripts\\WatchTowerGuard\\PlayerHealth.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAADwvzkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T23:23:36.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
@@ -39,7 +73,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "PlayerCamera.cs",
               "DocumentMoniker": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\PlayerCamera.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerCamera.cs",
@@ -47,12 +81,11 @@
               "RelativeToolTip": "Assets\\Scripts\\PlayerCamera.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T00:23:20.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-06T00:23:20.812Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "AmbientSound.cs",
               "DocumentMoniker": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\SoundSystem\\AreaSystem\\AmbientSound.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SoundSystem\\AreaSystem\\AmbientSound.cs",
@@ -60,8 +93,7 @@
               "RelativeToolTip": "Assets\\Scripts\\SoundSystem\\AreaSystem\\AmbientSound.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T23:32:19.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T23:32:19.356Z"
             }
           ]
         }

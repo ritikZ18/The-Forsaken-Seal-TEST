@@ -3,7 +3,17 @@ guid: ebe415f1b512e054cbe327e830947aef
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 99b4d1ad0ce6edd4780843d4838180e8, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hanumaan ji 002 tex 02
+    second: {fileID: 2800000, guid: 785eb4bc7b7fdc54cbcafdb50e1ff9f1, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

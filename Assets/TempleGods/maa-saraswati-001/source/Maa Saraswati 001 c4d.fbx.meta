@@ -3,7 +3,17 @@ guid: 01bda2ddf17c41e4eab3fb0552050f4d
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 144bac4083707c044aeb8637a73eadac, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Maa Saraswati Tex 2
+    second: {fileID: 2800000, guid: 33f6ddd2bd29a4449a6593a9f2a29c5c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

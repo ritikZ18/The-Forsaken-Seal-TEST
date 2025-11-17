@@ -1,161 +1,115 @@
-using System.Collections;
-
-using System.Collections.Generic;
-
 using UnityEngine;
 
-
-
-[RequireComponent(typeof(CharacterController))]
-
+/// <summary>
+/// Simple, optimized Rigidbody-based FPS/TPS Player Movement script.
+/// Supports walking, running, jumping, and crouching without CharacterController.
+/// </summary>
+[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerMovement : MonoBehaviour
-
 {
-
+    [Header("References")]
     public Camera playerCamera;
 
+    [Header("Movement Settings")]
     public float walkSpeed = 6f;
-
     public float runSpeed = 12f;
+    public float crouchSpeed = 3f;
+    public float jumpForce = 7f;
 
-    public float jumpPower = 7f;
+    [Header("Look Settings")]
+    public float lookSensitivity = 2f;
+    public float maxLookX = 80f;
 
-    public float gravity = 10f;
-
-    public float lookSpeed = 2f;
-
-    public float lookXLimit = 45f;
-
+    [Header("Crouch Settings")]
     public float defaultHeight = 2f;
-
     public float crouchHeight = 1f;
 
-    public float crouchSpeed = 3f;
-
-
-
-    private Vector3 moveDirection = Vector3.zero;
-
-    private float rotationX = 0;
-
-    private CharacterController characterController;
-
-
-
-    private bool canMove = true;
-
-
+    private Rigidbody rb;
+    private CapsuleCollider capsule;
+    private float rotX;
+    private bool isGrounded;
+    private bool isCrouching;
 
     void Start()
-
     {
+        rb = GetComponent<Rigidbody>();
+        capsule = GetComponent<CapsuleCollider>();
 
-        characterController = GetComponent<CharacterController>();
-
+        rb.freezeRotation = true; // prevents physics tilt
         Cursor.lockState = CursorLockMode.Locked;
-
         Cursor.visible = false;
-
     }
-
-
 
     void Update()
-
     {
-
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-
-        Vector3 right = transform.TransformDirection(Vector3.right);
-
-
-
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-
-        float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-
-        float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
-
-        float movementDirectionY = moveDirection.y;
-
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-
-
-
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
-
-        {
-
-            moveDirection.y = jumpPower;
-
-        }
-
-        else
-
-        {
-
-            moveDirection.y = movementDirectionY;
-
-        }
-
-
-
-        if (!characterController.isGrounded)
-
-        {
-
-            moveDirection.y -= gravity * Time.deltaTime;
-
-        }
-
-
-
-        if (Input.GetKey(KeyCode.R) && canMove)
-
-        {
-
-            characterController.height = crouchHeight;
-
-            walkSpeed = crouchSpeed;
-
-            runSpeed = crouchSpeed;
-
-
-
-        }
-
-        else
-
-        {
-
-            characterController.height = defaultHeight;
-
-            walkSpeed = 6f;
-
-            runSpeed = 12f;
-
-        }
-
-
-
-        characterController.Move(moveDirection * Time.deltaTime);
-
-
-
-        if (canMove)
-
-        {
-
-            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-
-            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-
-        }
-
+        Move();
+        CameraLook();
+        HandleJump();
+        HandleCrouch();
     }
 
+    void Move()
+    {
+        float t_hMove = Input.GetAxisRaw("Horizontal");
+        float t_vMove = Input.GetAxisRaw("Vertical");
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) && !isCrouching;
+
+        Vector3 moveDir = (transform.forward * t_vMove + transform.right * t_hMove).normalized;
+        float currentSpeed = isCrouching ? crouchSpeed : (isRunning ? runSpeed : walkSpeed);
+
+        Vector3 moveVelocity = moveDir * currentSpeed;
+        Vector3 rbVelocity = rb.linearVelocity;
+
+        // preserve vertical velocity (gravity/jump)
+        rb.linearVelocity = new Vector3(moveVelocity.x, rbVelocity.y, moveVelocity.z);
+    }
+
+    void CameraLook()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * lookSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * lookSensitivity;
+
+        rotX -= mouseY;
+        rotX = Mathf.Clamp(rotX, -maxLookX, maxLookX);
+
+        playerCamera.transform.localRotation = Quaternion.Euler(rotX, 0, 0);
+        transform.Rotate(Vector3.up * mouseX);
+    }
+
+    void HandleJump()
+    {
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+
+    void HandleCrouch()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            isCrouching = !isCrouching;
+            capsule.height = isCrouching ? crouchHeight : defaultHeight;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        // Simple grounded check
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            if (Vector3.Angle(contact.normal, Vector3.up) < 45f)
+            {
+                isGrounded = true;
+                return;
+            }
+        }
+        isGrounded = false;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+    }
 }

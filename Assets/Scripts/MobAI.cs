@@ -18,7 +18,6 @@ public class MobAI : MonoBehaviour
     [SerializeField] private int damagePerHit = 10;
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private string attackTrigger = "Attack";
-    [SerializeField] private float attackWindup = 0.15f;
 
     private float nextAttackTime = 0f;
     private bool attacking = false;
@@ -53,7 +52,7 @@ public class MobAI : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, rotateSpeed * Time.deltaTime);
         }
 
-        // Move or stop
+        // Move until close
         if (distance > stopDistance && !attacking)
         {
             agent.isStopped = false;
@@ -64,9 +63,11 @@ public class MobAI : MonoBehaviour
             agent.isStopped = true;
         }
 
+        // Set animator movement blend
         float normalizedSpeed = agent.velocity.magnitude / agent.speed;
         animator.SetFloat("Speed", normalizedSpeed);
-        // Attack when in range
+
+        // Trigger attack
         if (!attacking && distance <= attackRange && Time.time >= nextAttackTime)
             StartCoroutine(AttackRoutine());
     }
@@ -78,32 +79,43 @@ public class MobAI : MonoBehaviour
         attacking = true;
         agent.isStopped = true;
 
-        transform.LookAt(target.position); // Face player
-        animator.ResetTrigger(attackTrigger);
+        // Face player
+        transform.LookAt(target.position);
+
+        // Trigger attack animation
         animator.SetTrigger(attackTrigger);
 
-        yield return new WaitForSeconds(attackWindup);
-
-        DealDamageIfValid();
-
+        // Cooldown setup
         nextAttackTime = Time.time + attackCooldown;
+
+        // Wait for cooldown before attacking again
         yield return new WaitForSeconds(attackCooldown);
+
         attacking = false;
     }
 
+    // Called by an Animation Event on the punch impact frame
+    public void OnMobHit()
+    {
+        Debug.Log("OnMobHit() CALLED");
+        DealDamageIfValid();
+    }
+
+
     private void DealDamageIfValid()
     {
-        if (!target) return;
+        var playerHealth = target.GetComponentInParent<PlayerHealth>();
 
-        float dist = Vector3.Distance(transform.position, target.position);
-        if (dist <= attackRange + 0.2f)
+        Debug.Log("DealDamageIfValid CALLED");
+
+        if (playerHealth == null)
         {
-            var playerHealth = target.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damagePerHit);
-                Debug.Log("Player took " + damagePerHit + " damage.");
-            }
+            Debug.Log("PLAYERHEALTH = NULL");
+            return;
         }
+
+        playerHealth.TakeDamage(damagePerHit);
+        Debug.Log("DAMAGE APPLIED");
     }
+
 }

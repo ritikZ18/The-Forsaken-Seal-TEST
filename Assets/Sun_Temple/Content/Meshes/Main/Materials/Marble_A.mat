@@ -38,7 +38,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Marble_A
   m_Shader: {fileID: 4800000, guid: 0e9d5a909a1f7e84882a534d0d11e49f, type: 3}
-  m_Parent: {fileID: 2100000, guid: b8c3a0ded5e636c4abafc021709bba5d, type: 2}
+  m_Parent: {fileID: 2100000, guid: 779d5b1e8b9889b4d8c6714f522240a2, type: 2}
   m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _DISABLE_DECALS

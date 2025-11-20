@@ -11,6 +11,18 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\PlayerCamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\PlayerHealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\PlayerHealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\JahnaviScript\\HudController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\JahnaviScript\\HudController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\HazmatChaseAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\HazmatChaseAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\SoundSystem\\AreaSystem\\AmbientSound.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\SoundSystem\\AreaSystem\\AmbientSound.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -22,8 +34,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HudController.cs",
+              "DocumentMoniker": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\JahnaviScript\\HudController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\JahnaviScript\\HudController.cs",
+              "ToolTip": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\JahnaviScript\\HudController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\JahnaviScript\\HudController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T02:03:30.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerHealth.cs",
+              "DocumentMoniker": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\PlayerHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerHealth.cs",
+              "ToolTip": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\PlayerHealth.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerHealth.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAADwv0sAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T01:53:41.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HazmatChaseAI.cs",
+              "DocumentMoniker": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\HazmatChaseAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HazmatChaseAI.cs",
+              "ToolTip": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\HazmatChaseAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HazmatChaseAI.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T01:52:47.929Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,7 +83,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
               "ToolTip": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\PlayerMovement.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerMovement.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAADwvykAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAADwvykAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-06T00:23:31.442Z",
               "EditorCaption": ""
@@ -52,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "AmbientSound.cs",
               "DocumentMoniker": "C:\\Users\\ritik\\The-Forsaken-Real\\Assets\\Scripts\\SoundSystem\\AreaSystem\\AmbientSound.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SoundSystem\\AreaSystem\\AmbientSound.cs",
@@ -60,8 +111,7 @@
               "RelativeToolTip": "Assets\\Scripts\\SoundSystem\\AreaSystem\\AmbientSound.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T23:32:19.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T23:32:19.356Z"
             }
           ]
         }

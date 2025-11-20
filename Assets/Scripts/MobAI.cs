@@ -16,10 +16,8 @@ public class MobAI : MonoBehaviour
     [Header("Combat Settings")]
     [SerializeField] private float attackRange = 2.7f;
     [SerializeField] private int damagePerHit = 10;
-    [SerializeField] private float attackCooldown = 1.0f;
+    [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private string attackTrigger = "Attack";
-    [SerializeField] private bool dealDamageOnAnimationEvent = false;
-    [SerializeField] private float attackWindup = 0.15f;
 
     private float nextAttackTime = 0f;
     private bool attacking = false;
@@ -30,8 +28,7 @@ public class MobAI : MonoBehaviour
         animator = GetComponent<Animator>();
 
         agent.updateRotation = false;
-        agent.updatePosition = true;
-        agent.stoppingDistance = 0f;
+        agent.stoppingDistance = stopDistance;
 
         var playerObj = GameObject.FindWithTag(playerTag);
         if (playerObj != null)
@@ -48,12 +45,14 @@ public class MobAI : MonoBehaviour
         toPlayer.y = 0f;
         float distance = toPlayer.magnitude;
 
-        if (toPlayer.sqrMagnitude > 0.001f)
+        // Rotate toward player
+        if (distance > 0.1f)
         {
             Quaternion lookRot = Quaternion.LookRotation(toPlayer);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, rotateSpeed * Time.deltaTime);
         }
 
+        // Move until close
         if (distance > stopDistance && !attacking)
         {
             agent.isStopped = false;
@@ -62,48 +61,61 @@ public class MobAI : MonoBehaviour
         else
         {
             agent.isStopped = true;
-            agent.ResetPath();
         }
 
-        animator.SetFloat("Speed", agent.velocity.magnitude);
+        // Set animator movement blend
+        float normalizedSpeed = agent.velocity.magnitude / agent.speed;
+        animator.SetFloat("Speed", normalizedSpeed);
 
+        // Trigger attack
         if (!attacking && distance <= attackRange && Time.time >= nextAttackTime)
-        {
             StartCoroutine(AttackRoutine());
-        }
     }
 
     private IEnumerator AttackRoutine()
     {
+        if (target == null) yield break;
+
         attacking = true;
-        animator.ResetTrigger(attackTrigger);
+        agent.isStopped = true;
+
+        // Face player
+        transform.LookAt(target.position);
+
+        // Trigger attack animation
         animator.SetTrigger(attackTrigger);
 
+        // Cooldown setup
         nextAttackTime = Time.time + attackCooldown;
 
-        if (!dealDamageOnAnimationEvent)
-        {
-            yield return new WaitForSeconds(attackWindup);
-            DealDamageIfValid();
-        }
+        // Wait for cooldown before attacking again
+        yield return new WaitForSeconds(attackCooldown);
 
-        yield return new WaitForSeconds(attackCooldown * 0.8f);
         attacking = false;
     }
 
+    // Called by an Animation Event on the punch impact frame
+    public void OnMobHit()
+    {
+        Debug.Log("OnMobHit() CALLED");
+        DealDamageIfValid();
+    }
+
+
     private void DealDamageIfValid()
     {
-        if (!target) return;
+        var playerHealth = target.GetComponentInParent<PlayerHealth>();
 
-        var playerHealth = target.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
+        Debug.Log("DealDamageIfValid CALLED");
+
+        if (playerHealth == null)
         {
-            float dist = Vector3.Distance(transform.position, target.position);
-            if (dist <= attackRange + 0.3f)
-            {
-                playerHealth.TakeDamage(damagePerHit);
-                Debug.Log($"💥 Player took {damagePerHit} damage.");
-            }
+            Debug.Log("PLAYERHEALTH = NULL");
+            return;
         }
+
+        playerHealth.TakeDamage(damagePerHit);
+        Debug.Log("DAMAGE APPLIED");
     }
+
 }

@@ -18,17 +18,17 @@ public class PlayerHealth : MonoBehaviour
     public bool isDead = false;
     public System.Action<int, int> OnHealthChanged;
     public System.Action OnPlayerDeath;
-    public System.Action OnPlayerRespawn;
-    public int startingHealth = 5;
     public HUDController hud;
 
     void Start()
     {
-        currentHealth = startingHealth;
+        currentHealth = maxHealth; // Initialize health!
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         if (respawnPosition == Vector3.zero)
             respawnPosition = transform.position;
 
+        Debug.Log($"PlayerHealth initialized: {currentHealth}/{maxHealth}");
     }
 
     public void TakeDamage(int damage)
